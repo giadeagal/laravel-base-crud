@@ -17,19 +17,23 @@
                 </tr>
               </thead>
               <tbody>
+
+                @foreach ($comics as $comic)
                 <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>
-                      <a href="" class="btn btn-primary">Show</a>
-                      <a href="" class="btn btn-secondary">Edit</a>
-                      <a href="" class="btn btn-danger">Delete</a>
-                  </td>
-                </tr>
+                    <td>{{ $comic->title }}</td>
+                    <td>{{ $comic->description }}</td>
+                    <td>{{ $comic->price }}</td>
+                    <td>{{ $comic->series }}</td>
+                    <td>{{ $comic->sale_date }}</td>
+                    <td>{{ $comic->type }}</td>
+                    
+                    <td>
+                        <a href="" class="btn btn-primary">Show</a>
+                        <a href="" class="btn btn-secondary">Edit</a>
+                        <a href="" class="btn btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
         </table>
     </div>
