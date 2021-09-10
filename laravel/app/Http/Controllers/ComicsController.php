@@ -14,7 +14,7 @@ class ComicsController extends Controller
      */
     public function index()
     {
-        $comics = Pasta::All();
+        $comics = Comic::All();
         return view("comics.index", $comics);
     }
 
