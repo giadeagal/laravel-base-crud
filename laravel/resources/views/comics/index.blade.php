@@ -3,6 +3,11 @@
 @section('title', "Comics Admin")
 
 @section("content")
+
+    @if (session('modifica'))
+        {{ session('modifica') }}
+    @endif
+
     <div class="container">
         <table class="table table-light table-hover">
             <thead>
