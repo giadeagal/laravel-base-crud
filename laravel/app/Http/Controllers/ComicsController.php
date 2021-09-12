@@ -41,13 +41,8 @@ class ComicsController extends Controller
 
         $data = $request->all();
         $storeComic = new Comic;
-        $storeComic->title = $data['title'];
-        $storeComic->description = $data['description'];
-        $storeComic->thumb = $data['title'];
-        $storeComic->price = $data['price'];
-        $storeComic->series = $data['series'];
-        $storeComic->sale_date = $data['sale_date'];
-        $storeComic->type = $data['type'];
+
+        $storeComic->fill($data);
 
         $storeComic->save();
 
@@ -79,7 +74,8 @@ class ComicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::find($id);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -89,9 +85,12 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+        $comic->update($data);
+
+        return redirect()->route('comics.index')->with('modifica', 'Hai modificato ' .$comic->id);
     }
 
     /**
