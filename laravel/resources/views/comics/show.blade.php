@@ -1,20 +1,22 @@
 @extends ("layouts.app")
 
-@section('dettagli fumetto")
+@section("title", "dettagli fumetto")
 
 @section("content")
     <div class="container">
 
         <div class="row">
-            <h1></h1>
+            <div class="col">
+                <h1>{{ $comic->title }}</h1>
+            </div>
         </div>
 
         <div class="row">
             <div class="col">
-                <img src="" alt="">
+                <img src="{{ $comic->thumb }}" alt="{{ $comic->title }}" title="{{ $comic->title }}">
             </div>
             <div class="col">
-                <p></p>
+                <p>{!! $comic->description !!}</p>
             </div>
         </div>
     </div>
