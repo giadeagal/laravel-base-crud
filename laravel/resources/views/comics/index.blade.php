@@ -5,7 +5,15 @@
 @section("content")
 
     @if (session('modifica'))
-        {{ session('modifica') }}
+        <div class="alert alert-warning">
+          {{ session('modifica') }}
+        </div>
+    @endif
+
+    @if (session('cancel'))
+        <div class="alert alert-danger">
+          {{ session('cancel') }}
+        </div>
     @endif
 
     <div class="container">
@@ -33,9 +41,14 @@
                     <td>{{ $comic->type }}</td>
                     
                     <td>
-                        <a href="{{ route('comics.show', [$comic->id]) }}" class="btn btn-primary">Show</a>
-                        <a href="{{ route('comics.edit', [$comic->id]) }}" class="btn btn-secondary">Edit</a>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('comics.show', [$comic->id]) }}" class="btn btn-primary">Dettagli</a>
+                        <a href="{{ route('comics.edit', [$comic->id]) }}" class="btn btn-secondary">Modifica</a>
+                        <form action="{{ route('comics.destroy', [$comic->id]) }}" method="POST" class="d-inline-block">
+                          @csrf
+                          @method('DELETE')
+                          <input type="submit" value="Cancella" class="btn btn-danger">
+                        </form>
+                        
                     </td>
                   </tr>
                 @endforeach
